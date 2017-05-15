@@ -33,7 +33,7 @@
   </head>
   <body ng-app="myApp" ng-controller="myCtrl">
     <div>
-      <p>{{angular.isObject(mons[0])}}</p>
+      <p ng-if="angular.isObject(mons[0])">true</p>
       <div ng-repeat="Monster in mons">
         <button data-toggle="collapse" data-target="{{('#'+Monster.name).replace(/ /g,'_')}}">{{Monster.name}}</button>
         <div id="{{(''+Monster.name).replace(/ /g,'_')}}">
