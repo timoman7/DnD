@@ -33,7 +33,7 @@
   </head>
   <body ng-app="myApp" ng-controller="myCtrl">
     <div>
-      <p>{{angular.isObject([1,2,3])}}</p>
+      <p>{{angular.isObject(mons[0])}}</p>
       <div ng-repeat="Monster in mons">
         <button data-toggle="collapse" data-target="{{('#'+Monster.name).replace(/ /g,'_')}}">{{Monster.name}}</button>
         <div id="{{(''+Monster.name).replace(/ /g,'_')}}">
@@ -41,10 +41,8 @@
             <p ng-if="isString(Monster[MonsterCat])">
               {{MonsterCat + ": " + Monster[MonsterCat]}}
             </p>
-            <div ng-if="isObject(Monster[MonsterCat])">
-              <div ng-repeat="MonsterSubCat in Object.keys(Monster[MonsterCat])">
-                <p>{{MonsterSubCat + ": " + Monster[MonsterCat][MonsterSubCat]}}</p>
-              </div>
+            <div ng-if="isObject(Monster[MonsterCat])" ng-repeat="MonsterSubCat in Object.keys(Monster[MonsterCat])">
+              <p>{{MonsterSubCat + ": " + Monster[MonsterCat][MonsterSubCat]}}</p>
             </div>
           </div>
         </div>
