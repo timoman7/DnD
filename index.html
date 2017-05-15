@@ -18,8 +18,6 @@
       var app = angular.module('myApp', []);
       app.controller("myCtrl", function($scope) {
         $scope.angular = angular;
-        $scope.isString = angular.isString;
-        $scope.isObject = angular.isObject;
         $scope.checkString=function(e){
           if(e.replace){
             return true
@@ -42,8 +40,6 @@
           scop.$apply();
         });
         scop.mons = abc;
-        $scope.mons = abc;
-        $scope.$apply();
       });
       
     </script>
