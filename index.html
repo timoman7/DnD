@@ -19,6 +19,7 @@
       app.controller("myCtrl", function($scope) {
         scop = $scope;
         $scope.angular = angular;
+        $scope.isString = angular.isString;
         $scope.isObject = angular.isObject;
         $scope.Object = Object;
         $.getJSON('https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json',function(data){
@@ -37,13 +38,13 @@
         <button data-toggle="collapse" data-target="{{('#'+Monster.name).replace(/ /g,'_')}}">{{Monster.name}}</button>
         <div id="{{(''+Monster.name).replace(/ /g,'_')}}">
           <div ng-repeat="MonsterCat in Object.keys(Monster)" >
-            <p ng-if="!(isObject(Monster[MonsterCat]))">
+            <p ng-if="isString(Monster[MonsterCat])">
               {{MonsterCat + ": " + Monster[MonsterCat]}}
             </p>
             <div ng-if="isObject(Monster[MonsterCat])">
-                  <div ng-repeat="MonsterSubCat in Monster[MonsterCat]">
-                    <p>{{MonsterSubCat + ": " + Monster[MonsterCat][MonsterSubCat]}}</p>
-                  </div>
+              <div ng-repeat="MonsterSubCat in Object.keys(Monster[MonsterCat])">
+                <p>{{MonsterSubCat + ": " + Monster[MonsterCat][MonsterSubCat]}}</p>
+              </div>
             </div>
           </div>
         </div>
