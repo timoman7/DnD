@@ -17,7 +17,7 @@
       var scop;
       var app = angular.module('myApp', []);
       app.controller("myCtrl", function($scope) {
-        $scope.mons = {};
+        $scope.Monsters = {};
         $scope.angular = angular;
         $scope.checkString=function(e){
           if(e.replace){
@@ -36,25 +36,29 @@
         $scope.Object = Object;
         scop = $scope;
         //https://dl.dropboxusercontent.com/s/121t7xstyyeofxw/5e-SRD-Spells.json
-        $.getJSON('https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json',function(data){
+        //https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json
+        $.getJSON('https://dl.dropboxusercontent.com/s/121t7xstyyeofxw/5e-SRD-Spells.json',function(data){
           abc = data;
-          scop.mons = data;
-          $scope.mons = data;
+          scop.Monsters = data;
+          $scope.Monsters = data;
           scop.$apply();
         });
-        scop.mons = abc;
+        scop.Monsters = abc;
       });
       
     </script>
   </head>
   <body ng-app="myApp" ng-controller="myCtrl">
     <div>
-      <div ng-repeat="Monster in mons">
+      <div ng-repeat="Monster in Monsters">
         <button data-toggle="collapse" data-target="{{('#'+Monster.name).replace(/ /g,'_')}}">{{Monster.name}}</button>
         <div id="{{(''+Monster.name).replace(/ /g,'_')}}">
           <div ng-repeat="MonsterCat in Object.keys(Monster)" >
             <p>{{MonsterCat + ": " + Monster[MonsterCat]}}</p>
             
+            <div ng-repeat="MonsterSubCat in Object.keys(Monster[MonsterCat])">
+              <p>{{MonsterSubCat + ": " + Monster[MonsterCat][MonsterSubCat]}}</p>
+            </div>
           </div>
         </div>
       </div>
