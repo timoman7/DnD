@@ -52,14 +52,16 @@
         <button data-toggle="collapse" data-target="{{('#'+Monster.name).replace(/ /g,'_')}}">{{Monster.name}}</button>
         <div id="{{(''+Monster.name).replace(/ /g,'_')}}">
           <div ng-repeat="MonsterCat in Object.keys(Monster)" >
-            <p ng-if="Monster[MonsterCat].replace">
+            <p>
               {{MonsterCat + ": " + Monster[MonsterCat]}}
             </p>
+            <!--
             <div ng-if="!(Monster[MonsterCat].replace)">
               <div ng-repeat="MonsterSubCat in Object.keys(Monster[MonsterCat])">
                 <p>{{MonsterSubCat + ": " + Monster[MonsterCat][MonsterSubCat]}}</p>
               </div>
             </div>
+            -->
           </div>
         </div>
       </div>
