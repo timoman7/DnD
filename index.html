@@ -31,8 +31,8 @@
   <body ng-app="myApp" ng-controller="myCtrl">
     <div>
       <div ng-repeat="Monster in mons">
-        <button data-toggle="collapse" data-target="{{'#'+Monster.name}}">{{Monster.name}}</button>
-        <div id="{{Monster.name}}">
+        <button data-toggle="collapse" data-target="{{('#'+Monster.name).replace(/ /g,'_')}}">{{Monster.name}}</button>
+        <div id="{{(""+Monster.name).replace(/ /g,'_')}}">
           <div ng-repeat="MonsterCat in Object.keys(Monster)" >
             <p>{{MonsterCat + ": " + Monster[MonsterCat]}}</p>
           </div>
