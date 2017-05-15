@@ -17,15 +17,15 @@
       var scop;
       var app = angular.module('myApp', []);
       app.controller("myCtrl", function($scope) {
-        scop = $scope;
         $scope.angular = angular;
         $scope.isString = angular.isString;
         $scope.isObject = angular.isObject;
         $scope.Object = Object;
+        scop = $scope;
         $.getJSON('https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json',function(data){
           abc = data;
           scop.mons = data;
-        scop.$apply();
+          scop.$apply();
         });
       });
       
