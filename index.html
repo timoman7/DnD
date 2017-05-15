@@ -14,15 +14,16 @@
     <link rel='stylesheet' href='css/main.css'>
     <script type="text/javascript">
       var abc;
+      var scop;
       var app = angular.module('myApp', []);
       app.controller("myCtrl", function($scope) {
+        scop = $scope;
         $scope.Object = Object;
         $.getJSON('https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json',function(data){
           abc = data;
-          $scope.mons = data;
+          scop.mons = data;
         });
-        $scope.mons = abc;
-        $scope.$apply();
+        scop.$apply();
       });
       
     </script>
