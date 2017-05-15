@@ -35,6 +35,7 @@
         };
         $scope.Object = Object;
         scop = $scope;
+        //https://dl.dropboxusercontent.com/s/121t7xstyyeofxw/5e-SRD-Spells.json
         $.getJSON('https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json',function(data){
           abc = data;
           scop.mons = data;
@@ -52,16 +53,8 @@
         <button data-toggle="collapse" data-target="{{('#'+Monster.name).replace(/ /g,'_')}}">{{Monster.name}}</button>
         <div id="{{(''+Monster.name).replace(/ /g,'_')}}">
           <div ng-repeat="MonsterCat in Object.keys(Monster)" >
-            <p>
-              {{MonsterCat + ": " + Monster[MonsterCat]}}
-            </p>
-            <!--
-            <div ng-if="!(Monster[MonsterCat].replace)">
-              <div ng-repeat="MonsterSubCat in Object.keys(Monster[MonsterCat])">
-                <p>{{MonsterSubCat + ": " + Monster[MonsterCat][MonsterSubCat]}}</p>
-              </div>
-            </div>
-            -->
+            <p>{{MonsterCat + ": " + Monster[MonsterCat]}}</p>
+            
           </div>
         </div>
       </div>
