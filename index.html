@@ -32,7 +32,7 @@
     <div>
       <div ng-repeat="Monster in mons">
         <button data-toggle="collapse" data-target="{{('#'+Monster.name).replace(/ /g,'_')}}">{{Monster.name}}</button>
-        <div id="{{(""+Monster.name).replace(/ /g,'_')}}">
+        <div id="{{(''+Monster.name).replace(/ /g,'_')}}">
           <div ng-repeat="MonsterCat in Object.keys(Monster)" >
             <p ng-if="!isObject(Monster[MonsterCat])">
               {{MonsterCat + ": " + Monster[MonsterCat]}}
