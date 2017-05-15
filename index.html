@@ -15,8 +15,9 @@
     <script type="text/javascript">
       var app = angular.module('myApp', []);
       app.controller("myCtrl", function($scope) {
-
+        $scope.mons=$.ajax('https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json');
       });
+      
     </script>
   </head>
   <body ng-app="myApp" ng-controller="myCtrl">
