@@ -38,6 +38,7 @@
         $.getJSON('https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json',function(data){
           abc = data;
           scop.mons = data;
+          $scope.mons = data;
           scop.$apply();
         });
         scop.mons = abc;
@@ -50,8 +51,7 @@
       <div ng-repeat="Monster in mons">
         <button data-toggle="collapse" data-target="{{('#'+Monster.name).replace(/ /g,'_')}}">{{Monster.name}}</button>
         <div id="{{(''+Monster.name).replace(/ /g,'_')}}">
-          <div ng-repeat="MonsterCat in Object.keys(Monster)" >
-            {{MonsterCat + ": " + Monster[MonsterCat]}}
+          <div ng-repeat="MonsterCat in Object.keys(Monster)" >}
             <p>
               {{MonsterCat + ": " + Monster[MonsterCat]}}
             </p>
