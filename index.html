@@ -13,12 +13,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel='stylesheet' href='css/main.css'>
     <script type="text/javascript">
+      var abc;
       var app = angular.module('myApp', []);
       app.controller("myCtrl", function($scope) {
         $scope.Object = Object;
         $.getJSON('https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json',function(data){
+          abc = data;
           $scope.mons = data;
         });
+        $scope.mons = abc;
+        $scope.$apply();
       });
       
     </script>
