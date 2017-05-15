@@ -18,7 +18,6 @@
       var app = angular.module('myApp', []);
       app.controller("myCtrl", function($scope) {
         $scope.Monsters = {};
-        $scope.angular = angular;
         $scope.checkString=function(e){
           if(e.replace){
             return true
@@ -33,8 +32,8 @@
             return true
           }
         };
-        $scope.Object = Object;
         scop = $scope;
+        $scope.Object = Object;
         //https://dl.dropboxusercontent.com/s/121t7xstyyeofxw/5e-SRD-Spells.json
         //https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json
         $.getJSON('https://dl.dropboxusercontent.com/s/121t7xstyyeofxw/5e-SRD-Spells.json',function(data){
