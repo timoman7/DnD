@@ -55,10 +55,11 @@
         <div id="{{(''+Monster.name).replace(/ /g,'_')}}">
           <div ng-repeat="MonsterCat in Object.keys(Monster)" >
             <p>{{MonsterCat + ": " + Monster[MonsterCat]}}</p>
-            
+            <!--
             <div ng-repeat="MonsterSubCat in Object.keys(Monster[MonsterCat])">
               <p>{{MonsterSubCat + ": " + Monster[MonsterCat][MonsterSubCat]}}</p>
             </div>
+            -->
           </div>
         </div>
       </div>
