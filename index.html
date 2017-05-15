@@ -15,6 +15,7 @@
     <script type="text/javascript">
       var app = angular.module('myApp', []);
       app.controller("myCtrl", function($scope) {
+        $scope.Object = Object;
         $.getJSON('https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json',function(data){
           $scope.mons = data;
         });
