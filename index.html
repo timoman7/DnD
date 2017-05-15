@@ -20,6 +20,20 @@
         $scope.angular = angular;
         $scope.isString = angular.isString;
         $scope.isObject = angular.isObject;
+        $scope.checkString=function(e){
+          if(e.replace){
+            return true
+          }else{
+            return false
+          }
+        };
+        $scope.checkObj=function(e){
+          if(e.replace){
+            return false
+          }else{
+            return true
+          }
+        };
         $scope.Object = Object;
         scop = $scope;
         $.getJSON('https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json',function(data){
@@ -33,7 +47,7 @@
   </head>
   <body ng-app="myApp" ng-controller="myCtrl">
     <div>
-      <p>{{if(mons[0].subtype.replace){return true}else{return false}+": "+mons[0].name}}</p>
+      <p>{{checkString(mons[0].subtype)+","+checkString(mons[0].name)+","+checkObj(mons[0].subtype)+","+checkObj(mons[0].name)}}</p>
       <div ng-repeat="Monster in mons">
         <button data-toggle="collapse" data-target="{{('#'+Monster.name).replace(/ /g,'_')}}">{{Monster.name}}</button>
         <div id="{{(''+Monster.name).replace(/ /g,'_')}}">
