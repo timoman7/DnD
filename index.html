@@ -32,8 +32,10 @@
     <div>
       <div ng-repeat="Monster in mons">
         <button data-toggle="collapse" data-target="{{'#'+Monster.name}}">{{Monster.name}}</button>
-        <div id="{{Monster.name}}" ng-repeat="MonsterCat in Object.keys(Monster)" >
-          <p>{{MonsterCat + ": " + Monster[MonsterCat]}}</p>
+        <div id="{{Monster.name}}">
+          <div ng-repeat="MonsterCat in Object.keys(Monster)" >
+            <p>{{MonsterCat + ": " + Monster[MonsterCat]}}</p>
+          </div>
         </div>
       </div>
     </div>
