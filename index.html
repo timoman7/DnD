@@ -104,6 +104,7 @@
   </head>
   <body ng-app="myApp" ng-controller="myCtrl">
     <div>
+      {{Monsters}}
       <div ng-repeat="Monster in Monsters" ng-init="Monsters = {}">
         {{Monster.name}}
         <button data-toggle="collapse" data-target="{{('#'+Monster.name).replace(/ /g,'_')}}">{{(''+Monster.name).replace(/ /g,'_')}}</button>
