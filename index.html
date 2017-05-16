@@ -15,55 +15,16 @@
     
   </head>
   <body ng-app="myApp" ng-controller="myCtrl">
-    <script type="text/javascript">
-      var abc;
-      var scop;
-      var app = angular.module('myApp', []);
-      app.controller("myCtrl", function($scope) {
-        $scope.Monsters = {};
-        /*
-        Sample
-          {{"name: "+Monster.name}}
-          {{"size: "+Monster.size}}
-          {{"type: "+Monster.type}}
-        */
-        $scope.checkString=function(e){
-          if(e.replace){
-            return true
-          }else{
-            return false
-          }
-        };
-        $scope.checkObj=function(e){
-          if(e.replace){
-            return false
-          }else{
-            return true
-          }
-        };
-        
-        $scope.Object = Object;
-        scop = $scope;
-        //https://dl.dropboxusercontent.com/s/121t7xstyyeofxw/5e-SRD-Spells.json
-        //https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json
-        $.getJSON('https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json',function(data){
-          abc = data;
-          $scope.Monsters = data;
-          scop.$apply();
-        });
-        $scope.Monsters = abc;
-        $scope.$apply();
-      });
-      
-    </script>
     <div>
       {{Monsters}}
-      <div ng-repeat="Monster in Monsters" ng-init="Monsters = {}">
+      <div ng-repeat="Monster in Monsters">
         {{Monster.name}}
-        <button data-toggle="collapse" data-target="{{('#'+Monster.name).replace(/ /g,'_')}}">{{(''+Monster.name).replace(/ /g,'_')}}</button>
+        <button data-toggle="collapse" data-target="{{('#'+Monster.name).replace(/ /g,'_')}}">
+          {{(''+Monster.name).replace(/ /g,'_')}}
+        </button>
         <div id="{{(''+Monster.name).replace(/ /g,'_')}}">
-          {{"name: "+Monster.name}}
           <!--
+          {{"name: "+Monster.name}}
           {{"size: "+Monster.size}}
           {{"type: "+Monster.type}}
           {{"subtype: "+Monster.subtype}}
@@ -121,5 +82,43 @@
     <!--
     <iframe src = "https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json"></iframe>
     -->
+    <script type="text/javascript">
+      var abc;
+      var scop;
+      var app = angular.module('myApp', []);
+      app.controller("myCtrl", function($scope) {
+        $scope.Monsters = {};
+        /*
+        Sample
+          {{"name: "+Monster.name}}
+          {{"size: "+Monster.size}}
+          {{"type: "+Monster.type}}
+        */
+        $scope.myCheckString=function(e){
+          if(e.replace){
+            return true
+          }else{
+            return false
+          }
+        };
+        $scope.myCheckObj=function(e){
+          if(e.replace){
+            return false
+          }else{
+            return true
+          }
+        };
+        scop = $scope;
+        //https://dl.dropboxusercontent.com/s/121t7xstyyeofxw/5e-SRD-Spells.json
+        //https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json
+        $.getJSON('https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json',function(data){
+          abc = data;
+          $scope.Monsters = data;
+          scop.$apply();
+        });
+        $scope.Monsters = abc;
+        $scope.$apply();
+      });
+    </script>
   </body>
 </html>
