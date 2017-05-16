@@ -117,15 +117,10 @@
         //https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json
         $.getJSON('https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json',function(data){
           abc = data;
-          scop.Monsters = data;
+          scop.Monsters = abc;
           scop.$apply();
         });
       });
-      setInterval(function(){
-        if(scop.$apply){
-          scop.$apply();
-        }
-      },100);
     </script>
   </body>
 </html>
