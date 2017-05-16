@@ -83,11 +83,6 @@
       var scop;
       var clientX = 0;
       var clientY = 0;
-      setInterval(function(){
-        if(scop.$apply){
-          scop.$apply();
-        }
-      },100);
       document.onmousemove=function(e){
         clientX = e.clientX;
         clientY = e.clientY;
@@ -126,6 +121,11 @@
           scop.$apply();
         });
       });
+      setInterval(function(){
+        if(scop.$apply){
+          scop.$apply();
+        }
+      },100);
     </script>
   </body>
 </html>
