@@ -52,13 +52,10 @@
       <div ng-repeat="Monster in Monsters">
         <button data-toggle="collapse" data-target="{{('#'+Monster.name).replace(/ /g,'_')}}">{{Monster.name}}</button>
         <div id="{{(''+Monster.name).replace(/ /g,'_')}}">
-          <div ng-repeat="MonsterCat in Object.keys(Monster)" ng-if="checkString(Monster[MonsterCat])">
-            <p>{{MonsterCat + ": " + Monster[MonsterCat]}}</p>
-          </div>
-          <div ng-repeat="MonsterCat in Object.keys(Monster)" ng-if="checkObj(Monster[MonsterCat])">
-            <p>{{MonsterCat + ":"}}</p>
-            <div ng-repeat="MonsterSubCat in Object.keys(Monster[MonsterCat])">
-              <p>{{MonsterSubCat + ": " + Monster[MonsterCat][MonsterSubCat]}}</p>
+          <div ng-repeat="MonsterCat in Object.keys(Monster)">
+            <div ng-if="checkString(Monster[MonsterCat])">{{MonsterCat + ": " + Monster[MonsterCat]}}</div>
+            <div ng-repeat="MonsterSubCat in Object.keys(Monster[MonsterCat])" ng-if="checkObj(Monster[MonsterCat])">
+              <div>{{MonsterSubCat + ": " + Monster[MonsterCat][MonsterSubCat]}}</div>
             </div>
           </div>
         </div>
