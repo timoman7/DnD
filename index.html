@@ -18,6 +18,7 @@
       var app = angular.module('myApp', []);
       app.controller("myCtrl", function($scope) {
         $scope.Monsters = {};
+        /*
         $scope.checkString=function(e){
           if(e.replace){
             return true
@@ -32,6 +33,7 @@
             return true
           }
         };
+        */
         scop = $scope;
         $scope.Object = Object;
         //https://dl.dropboxusercontent.com/s/121t7xstyyeofxw/5e-SRD-Spells.json
@@ -42,7 +44,6 @@
           $scope.Monsters = data;
           scop.$apply();
         });
-        scop.Monsters = abc;
       });
       
     </script>
