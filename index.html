@@ -16,75 +16,68 @@
   </head>
   <body ng-app="myApp" ng-controller="myCtrl">
     <div>
-      {{clientX +', '+ clientY}}
-      {{Monsters}}
-      <!--
+      <p>{{clientX +', '+ clientY}}</p>
       <div ng-repeat="Monster in Monsters">
-        {{Monster.name}}
+        <p>{{Monster.name}}</p>
         <button data-toggle="collapse" data-target="{{('#'+Monster.name).replace(/ /g,'_')}}">
           {{(''+Monster.name).replace(/ /g,'_')}}
         </button>
         <div id="{{(''+Monster.name).replace(/ /g,'_')}}">
-          
-          {{"name: "+Monster.name}}
-          {{"size: "+Monster.size}}
-          {{"type: "+Monster.type}}
-          {{"subtype: "+Monster.subtype}}
-          {{"alignment: "+Monster.alignment}}
-          {{"armor_class: "+Monster.armor_class}}
-          {{"hit_points: "+Monster.hit_points}}
-          {{"hit_dice: "+Monster.hit_dice}}
-          {{"speed: "+Monster.speed}}
-          {{"strength: "+Monster.strength}}
-          {{"dexterity: "+Monster.dexterity}}
-          {{"constitution: "+Monster.constitution}}
-          {{"intelligence: "+Monster.intelligence}}
-          {{"wisdom: "+Monster.wisdom}}
-          {{"charisma: "+Monster.charisma}}
-          {{"constitution_save: "+Monster.constitution_save}}
-          {{"intelligence_save: "+Monster.intelligence_save}}
-          {{"wisdom_save: "+Monster.wisdom_save}}
-          {{"history: "+Monster.history}}
-          {{"perception: "+Monster.perception}}
-          {{"damage_vulnerabilities: "+Monster.damage_vulnerabilities}}
-          {{"damage_resistances: "+Monster.damage_resistances}}
-          {{"damage_immunities: "+Monster.damage_immunities}}
-          {{"condition_immunities: "+Monster.condition_immunities}}
-          {{"senses: "+Monster.senses}}
-          {{"languages: "+Monster.languages}}
-          {{"challenge_rating: "+Monster.challenge_rating}}
-          {{"special_abilities:"}}
+          <p>{{"name: "+Monster.name}}</p>
+          <p>{{"size: "+Monster.size}}</p>
+          <p>{{"type: "+Monster.type}}</p>
+          <p>{{"subtype: "+Monster.subtype}}</p>
+          <p>{{"alignment: "+Monster.alignment}}</p>
+          <p>{{"armor_class: "+Monster.armor_class}}</p>
+          <p>{{"hit_points: "+Monster.hit_points}}</p>
+          <p>{{"hit_dice: "+Monster.hit_dice}}</p>
+          <p>{{"speed: "+Monster.speed}}</p>
+          <p>{{"strength: "+Monster.strength}}</p>
+          <p>{{"dexterity: "+Monster.dexterity}}</p>
+          <p>{{"constitution: "+Monster.constitution}}</p>
+          <p>{{"intelligence: "+Monster.intelligence}}</p>
+          <p>{{"wisdom: "+Monster.wisdom}}</p>
+          <p>{{"charisma: "+Monster.charisma}}</p>
+          <p>{{"constitution_save: "+Monster.constitution_save}}</p>
+          <p>{{"intelligence_save: "+Monster.intelligence_save}}</p>
+          <p>{{"wisdom_save: "+Monster.wisdom_save}}</p>
+          <p>{{"history: "+Monster.history}}</p>
+          <p>{{"perception: "+Monster.perception}}</p>
+          <p>{{"damage_vulnerabilities: "+Monster.damage_vulnerabilities}}</p>
+          <p>{{"damage_resistances: "+Monster.damage_resistances}}</p>
+          <p>{{"damage_immunities: "+Monster.damage_immunities}}</p>
+          <p>{{"condition_immunities: "+Monster.condition_immunities}}</p>
+          <p>{{"senses: "+Monster.senses}}</p>
+          <p>{{"languages: "+Monster.languages}}</p>
+          <p>{{"challenge_rating: "+Monster.challenge_rating}}</p>
+          <p>{{"special_abilities:"}}</p>
           <div ng-repeat="special_ability in Monster.special_abilities">
-            {{"name: "+special_ability.name}}
-            {{"desc: "+special_ability.desc}}
-            {{"attack_bonus: "+special_ability.attack_bonus}}
-            {{"damage_dice: "+special_ability.damage_dice}}
-            {{"damage_bonus: "+special_ability.damage_bonus}}
+            <p>{{"name: "+special_ability.name}}</p>
+            <p>{{"desc: "+special_ability.desc}}</p>
+            <p>{{"attack_bonus: "+special_ability.attack_bonus}}</p>
+            <p>{{"damage_dice: "+special_ability.damage_dice}}</p>
+            <p>{{"damage_bonus: "+special_ability.damage_bonus}}</p>
           </div>
-          {{"actions:"}}
+          <p>{{"actions:"}}</p>
           <div ng-repeat="action in Monster.actions">
-            {{"name: "+action.name}}
-            {{"desc: "+action.desc}}
-            {{"attack_bonus: "+action.attack_bonus}}
-            {{"damage_dice: "+action.damage_dice}}
-            {{"damage_bonus: "+action.damage_bonus}}
+            <p>{{"name: "+action.name}}</p>
+            <p>{{"desc: "+action.desc}}</p>
+            <p>{{"attack_bonus: "+action.attack_bonus}}</p>
+            <p>{{"damage_dice: "+action.damage_dice}}</p>
+            <p>{{"damage_bonus: "+action.damage_bonus}}</p>
           </div>
-          {{"legendary_actions:"}}
+          <p>{{"legendary_actions:"}}</p>
           <div ng-repeat="legendary_action in Monster.legendary_actions">
-            {{"name: "+legendary_action.name}}
-            {{"desc: "+legendary_action.desc}}
-            {{"attack_bonus: "+legendary_action.attack_bonus}}
-            {{"damage_dice: "+legendary_action.damage_dice}}
-            {{"damage_bonus: "+legendary_action.damage_bonus}}
+            <p>{{"name: "+legendary_action.name}}</p>
+            <p>{{"desc: "+legendary_action.desc}}</p>
+            <p>{{"attack_bonus: "+legendary_action.attack_bonus}}</p>
+            <p>{{"damage_dice: "+legendary_action.damage_dice}}</p>
+            <p>{{"damage_bonus: "+legendary_action.damage_bonus}}</p>
           </div>
           
         </div>
-      </div
-    -->
+      </div>
     </div>
-    <!--
-    <iframe src = "https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json"></iframe>
-    -->
     <script type="text/javascript">
       var abc;
       var scop;
