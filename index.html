@@ -85,8 +85,19 @@
     <script type="text/javascript">
       var abc;
       var scop;
+      var clientX = 0;
+      var clientY = 0;
+      document.onmousemove=function(e){
+        clientX = e.clientX;
+        clientY = e.clientY;
+        if(scop.$alert){
+          scop.$alert();
+        }
+      };
       var app = angular.module('myApp', []);
       app.controller("myCtrl", function($scope) {
+        $scope.clientX = clientX;
+        $scope.clientY = clientY;
         $scope.Monsters = {};
         /*
         Sample
