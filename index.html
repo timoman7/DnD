@@ -29,7 +29,18 @@
             <div ng-if="myCheckObj(Monster[MonsterCat])">
               {{ MonsterCat + ":{" }}
               <div ng-repeat="MonsterSubCat in Object.keys(Monster[MonsterCat])">
-                {{ MonsterSubCat + ": " + Monster[MonsterCat][MonsterSubCat] }}
+                
+                <p ng-if="myCheckString(Monster[MonsterCat][MonsterSubCat]) || myCheckNum(Monster[MonsterCat][MonsterSubCat])">
+                  {{MonsterSubCat + ": " + Monster[MonsterCat][MonsterSubCat]}}
+                </p>
+                <div ng-if="myCheckObj(Monster[MonsterCat][MonsterSubCat])">
+                  {{ MonsterSubCat + ":{" }}
+                  <div ng-repeat="MonsterSubCatVal in Object.keys(Monster[MonsterCat][MonsterSubCat])">
+                    {{ MonsterSubCatVal + ": " + Monster[MonsterCat][MonsterSubCat][MonsterSubCatVal] }}
+                  </div>
+                  {{ "}" }}
+                </div>
+                
               </div>
               {{ "}" }}
             </div>
