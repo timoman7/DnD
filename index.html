@@ -77,11 +77,8 @@
         if(curJSON !== "Monsters"){
           curJSON = "Monsters";
           if(scop){
-            $.getJSON('https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json',function(data){
-              abc = data;
-              scop.Monsters = abc;
-              scop.$apply();
-            });
+            scop.Monsters = abc;
+            scop.$apply();
           }
         }
       }
@@ -89,11 +86,8 @@
         if(curJSON !== "Spells"){
           curJSON = "Spells";
           if(scop){
-            $.getJSON('https://dl.dropboxusercontent.com/s/121t7xstyyeofxw/5e-SRD-Spells.json',function(data){
-              abcd = data;
-              scop.Monsters = abcd;
-              scop.$apply();
-            });
+            scop.Monsters = abcd;
+            scop.$apply();
           }
         }
       }
@@ -139,6 +133,9 @@
           abc = data;
           scop.Monsters = abc;
           scop.$apply();
+        });
+        $.getJSON('https://dl.dropboxusercontent.com/s/121t7xstyyeofxw/5e-SRD-Spells.json',function(data){
+          abcd = data;
         });
       });
     </script>
