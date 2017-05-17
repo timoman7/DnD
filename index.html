@@ -102,6 +102,7 @@
         $scope.clientX = clientX;
         $scope.clientY = clientY;
         $scope.Monsters = {};
+        $scope.jQuery = jQuery;
         /*
         Sample
           {{"name: "+Monster.name}}
@@ -142,14 +143,12 @@
       });
     </script>
     <script type="text/ng-template" id="Tree.html">
-      $scope.TreeTrunkTemp = TreeTrunk;
-      $scope.TreeTemp = Tree;
       <p class="Tree" ng-if="myCheckString(TreeTrunk[Tree]) || myCheckNum(TreeTrunk[Tree])">
         {{Tree + ": " + TreeTrunk[Tree]}}
       </p>
       <div class="Tree" ng-if="myCheckObj(TreeTrunk[Tree])">
         {{ Tree + ":{" }}
-        <div class="Tree" ng-repeat="Tree in Object.keys(TreeTrunk[Tree])" ng-init="TreeTrunk = TreeTrunkTemp[TreeTemp]" ng-include="'Tree.html'"></div>
+        <div class="Tree" ng-repeat="Tree in Object.keys(TreeTrunk[Tree])" ng-init="TreeTrunk = jQuery.extend({},TreeTrunk[Tree],true)" ng-include="'Tree.html'"></div>
         {{ "}" }}
       </div>
     </script>
