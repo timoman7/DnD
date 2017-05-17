@@ -60,13 +60,39 @@
     </div>
     <script type="text/javascript">
       var abc;
+      var abcd;
       var scop;
+      var curJSON = "Monsters";
       var clientX = 0;
       var clientY = 0;
       document.onmousemove=function(e){
         clientX = e.clientX;
         clientY = e.clientY;
       };
+      function setMonsters(){
+        if(curJSON !== "Monsters"){
+          curJSON = "Monsters";
+          if(scop){
+            $.getJSON('https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json',function(data){
+              abc = data;
+              scop.Monsters = abc;
+              scop.$apply();
+            });
+          }
+        }
+      }
+      function setSpells(){
+        if(curJSON !== "Spells"){
+          curJSON = "Spells";
+          if(scop){
+            $.getJSON('https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json',function(data){
+              abcd = data;
+              scop.Monsters = abcd;
+              scop.$apply();
+            });
+          }
+        }
+      }
       var app = angular.module('myApp', []);
       app.controller("myCtrl", function($scope) {
         $scope.clientX = clientX;
