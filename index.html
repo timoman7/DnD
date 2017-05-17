@@ -19,8 +19,8 @@
       <p>{{clientX +', '+ clientY}}</p>
       <div ng-repeat="Monster in Monsters">
         <p>{{Monster.name}}</p>
-        <button data-toggle="collapse" data-target="{{('#'+Monster.name).replace(/ /g,'_')}}">
-          {{(''+Monster.name).replace(/ /g,'_')}}
+        <button data-toggle="collapse" data-target="{{('#'+Monster.name).replace(AllSpace,'_')}}">
+          {{(''+Monster.name).replace(AllSpace,'_')}}
         </button>
         <div id="{{(''+Monster.name).replace(/ /g,'_')}}">
           <p>{{"name: "+Monster.name}}</p>
@@ -112,6 +112,7 @@
             return true
           }
         };
+        $scope.AllSpace = new RegExp(/ /g);
         scop = $scope;
         //https://dl.dropboxusercontent.com/s/121t7xstyyeofxw/5e-SRD-Spells.json
         //https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json
