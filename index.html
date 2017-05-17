@@ -117,6 +117,13 @@
             return false
           }
         };
+        $scope.myCheckNum=function(e){
+          if((typeof(e)).toLowerCase() === "number"){
+            return true
+          }else{
+            return false
+          }
+        };
         $scope.myCheckObj=function(e){
           if(e.replace){
             return false
