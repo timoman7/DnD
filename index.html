@@ -23,7 +23,7 @@
         </button>
         <div id="{{(''+Monster.name).replace(AllSpace,'_')}}">
           <div ng-repeat="MonsterCat in Object.keys(Monster)">
-            <p ng-if="myCheckString(Monster[MonsterCat])">
+            <p ng-if="myCheckString(Monster[MonsterCat]) || myCheckNum(Monster[MonsterCat])">
               {{MonsterCat + ": " + Monster[MonsterCat]}}
             </p>
             <div ng-if="myCheckObj(Monster[MonsterCat])">
@@ -111,7 +111,7 @@
           {{"type: "+Monster.type}}
         */
         $scope.myCheckString=function(e){
-          if(e.replace){
+          if((typeof(e)).toLowerCase() === "string"){
             return true
           }else{
             return false
@@ -125,10 +125,10 @@
           }
         };
         $scope.myCheckObj=function(e){
-          if(e.replace){
-            return false
-          }else{
+          if((typeof(e)).toLowerCase() === "object"){
             return true
+          }else{
+            return false
           }
         };
         $scope.Object = Object;
