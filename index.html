@@ -148,7 +148,7 @@
           {{Tree + ": " + TreeTrunk[Tree]}}
         </p>
         <div class="Tree" ng-if="myCheckObj(TreeTrunk[Tree])">
-          {{TreeTrunk[Tree]}}
+          {{Object.keys(TreeTrunk[Tree])}}
           {{ Tree + ":{" }}
           <div class="Tree" ng-repeat="Tree in Object.keys(TreeTrunk[Tree])" ng-init="TreeTrunk = TreeTrunk[Tree]" ng-include="'Tree.html'"></div>
           {{ "}" }}
