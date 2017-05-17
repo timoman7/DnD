@@ -32,9 +32,9 @@
         <button data-toggle="collapse" data-target="{{('#'+Monster.name).replace(AllSpace,'_')}}">
           {{(''+Monster.name).replace(AllSpace,'_')}}
         </button>
-        <div id="{{(''+Monster.name).replace(AllSpace,'_')}}">
-          <div class="Tree" ng-repeat="Tree in Object.keys(Monster)" ng-init="TreeTrunk = Monster" ng-include="'Tree.html'">
-            <!--
+        <div id="{{(''+Monster.name).replace(AllSpace,'_')}}" ng-init="TreeTrunk = Monster" ng-include="'Tree.html'">
+          <!--
+          <div class="Tree" ng-repeat="Tree in Object.keys(TreeTrunk)">
             <p class="Tree" ng-if="myCheckString(Monster[MonsterCat]) || myCheckNum(Monster[MonsterCat])">
               {{MonsterCat + ": " + Monster[MonsterCat]}}
             </p>
@@ -57,8 +57,8 @@
               </div>
               {{ "}" }}
             </div>
-            -->
           </div>
+          -->
         </div>
       </div>
     </div>
@@ -143,14 +143,16 @@
       });
     </script>
     <script type="text/ng-template" id="Tree.html">
-      <p class="Tree" ng-if="myCheckString(TreeTrunk[Tree]) || myCheckNum(TreeTrunk[Tree])">
-        {{Tree + ": " + TreeTrunk[Tree]}}
-      </p>
-      <div class="Tree" ng-if="myCheckObj(TreeTrunk[Tree])">
-        {{TreeTrunk[Tree]}}
-        {{ Tree + ":{" }}
-        <div class="Tree" ng-repeat="Tree in Object.keys(TreeTrunk[Tree])" ng-include="'Tree.html', 'TreeTrunk = TreeTrunk[Tree]'"></div>
-        {{ "}" }}
+      <div class="Tree" ng-repeat="Tree in Object.keys(TreeTrunk)">
+        <p class="Tree" ng-if="myCheckString(TreeTrunk[Tree]) || myCheckNum(TreeTrunk[Tree])">
+          {{Tree + ": " + TreeTrunk[Tree]}}
+        </p>
+        <div class="Tree" ng-if="myCheckObj(TreeTrunk[Tree])">
+          {{TreeTrunk[Tree]}}
+          {{ Tree + ":{" }}
+          <div class="Tree" ng-repeat="Tree in Object.keys(TreeTrunk[Tree])" ng-init="TreeTrunk = TreeTrunk[Tree]" ng-include="'Tree.html'"></div>
+          {{ "}" }}
+        </div>
       </div>
     </script>
   </body>
