@@ -29,7 +29,7 @@
             <div class="Tree" ng-if="myCheckObj(Monster[MonsterCat])">
               {{ MonsterCat + ":{" }}
               <div class="Tree" ng-repeat="MonsterSubCat in Object.keys(Monster[MonsterCat])">
-                
+                <!-- Maybe insert template here -->
                 <p class="Tree" ng-if="myCheckString(Monster[MonsterCat][MonsterSubCat]) || myCheckNum(Monster[MonsterCat][MonsterSubCat])">
                   {{MonsterSubCat + ": " + Monster[MonsterCat][MonsterSubCat]}}
                 </p>
