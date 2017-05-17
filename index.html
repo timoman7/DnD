@@ -33,7 +33,7 @@
           {{(''+Monster.name).replace(AllSpace,'_')}}
         </button>
         <div id="{{(''+Monster.name).replace(AllSpace,'_')}}">
-          <div class="Tree" ng-repeat="Tree in Object.keys(Monster)" ng-include="'Tree.html'">
+          <div class="Tree" ng-repeat="Tree in Object.keys(Monster)" ng-init="TreeTrunk = Monster" ng-include="'Tree.html'">
             <!--
             <p class="Tree" ng-if="myCheckString(Monster[MonsterCat]) || myCheckNum(Monster[MonsterCat])">
               {{MonsterCat + ": " + Monster[MonsterCat]}}
@@ -142,12 +142,12 @@
       });
     </script>
     <script type="text/ng-template" id="Tree.html">
-      <p class="Tree" ng-if="myCheckString(Monster[Tree]) || myCheckNum(Monster[Tree])">
-        {{Tree + ": " + Monster[Tree]}}
+      <p class="Tree" ng-if="myCheckString(TreeTrunk[Tree]) || myCheckNum(TreeTrunk[Tree])">
+        {{Tree + ": " + TreeTrunk[Tree]}}
       </p>
-      <div class="Tree" ng-if="myCheckObj(Monster[Tree])">
+      <div class="Tree" ng-if="myCheckObj(TreeTrunk[Tree])">
         {{ Tree + ":{" }}
-        <div class="Tree" ng-repeat="Tree in Object.keys(Monster[Tree])" ng-include="'Tree.html'"></div>
+        <div class="Tree" ng-repeat="Tree in Object.keys(TreeTrunk[Tree])" ng-init="TreeTrunk = TreeTrunk[Tree]" ng-include="'Tree.html'"></div>
         {{ "}" }}
       </div>
     </script>
