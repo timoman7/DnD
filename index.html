@@ -18,11 +18,23 @@
     <div>
       <p>{{clientX +', '+ clientY}}</p>
       <div ng-repeat="Monster in Monsters">
-        <p>{{Monster.name}}</p>
         <button data-toggle="collapse" data-target="{{('#'+Monster.name).replace(AllSpace,'_')}}">
           {{(''+Monster.name).replace(AllSpace,'_')}}
         </button>
         <div id="{{(''+Monster.name).replace(AllSpace,'_')}}">
+          <div ng-repeat="MonsterCat in Object.keys(Monster)">
+            <p ng-if="myCheckString(Monster[MonsterCat])">
+              {{MonsterCat + ": " + Monster[MonsterCat]}}
+            </p>
+            <div ng-if="myCheckObj(Monster[MonsterCat])">
+              {{ MonsterCat + ":{" }}
+              <div ng-repeat="MonsterSubCat in Object.keys(Monster[MonsterCat])">
+                {{ MonsterSubCat + ": " + Monster[MonsterCat][MonsterSubCat] }}
+              </div>
+              {{ "}" }}
+            </div>
+          </div>
+          <!--
           <p>{{"name: "+Monster.name}}</p>
           <p>{{"size: "+Monster.size}}</p>
           <p>{{"type: "+Monster.type}}</p>
@@ -74,7 +86,7 @@
             <p>{{"damage_dice: "+legendary_action.damage_dice}}</p>
             <p>{{"damage_bonus: "+legendary_action.damage_bonus}}</p>
           </div>
-          
+          -->
         </div>
       </div>
     </div>
@@ -112,6 +124,7 @@
             return true
           }
         };
+        $scope.Object = Object;
         $scope.AllSpace = new RegExp(/ /g);
         scop = $scope;
         //https://dl.dropboxusercontent.com/s/121t7xstyyeofxw/5e-SRD-Spells.json
