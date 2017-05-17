@@ -3,6 +3,7 @@
   <head>
     <title>DND</title>
     <script src="../jquery-3.2.1.min.js"></script>
+    <script src="json-tree.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script><!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -27,40 +28,7 @@
       </div>
     </nav>
     <div>
-      <div ng-include="'Tree.html'"></div>
-      <div ng-repeat="Monster in Monsters">
-        <button data-toggle="collapse" data-target="{{('#'+Monster.name).replace(AllSpace,'_')}}">
-          {{(''+Monster.name).replace(AllSpace,'_')}}
-        </button>
-        <div id="{{(''+Monster.name).replace(AllSpace,'_')}}" ng-init="TreeTrunk = Monster" ng-include="'Tree.html'">
-          <!--
-          <div class="Tree" ng-repeat="Tree in Object.keys(TreeTrunk)">
-            <p class="Tree" ng-if="myCheckString(Monster[MonsterCat]) || myCheckNum(Monster[MonsterCat])">
-              {{MonsterCat + ": " + Monster[MonsterCat]}}
-            </p>
-            <div class="Tree" ng-if="myCheckObj(Monster[MonsterCat])">
-              {{ MonsterCat + ":{" }}
-              <div class="Tree" ng-repeat="Tree in Object.keys(Monster[MonsterCat])">
-                 Maybe insert template here
-                <p class="Tree" ng-if="myCheckString(Monster[MonsterCat][MonsterSubCat]) || myCheckNum(Monster[MonsterCat][MonsterSubCat])">
-                  {{MonsterSubCat + ": " + Monster[MonsterCat][MonsterSubCat]}}
-                </p>
-                <div class="Tree" ng-if="myCheckObj(Monster[MonsterCat][MonsterSubCat])">
-                  {{ MonsterSubCat + ":{" }}
-                  <div class="Tree" ng-repeat="MonsterSubCatVal in Object.keys(Monster[MonsterCat][MonsterSubCat])">
-                    {{ MonsterSubCatVal + ": " + Monster[MonsterCat][MonsterSubCat][MonsterSubCatVal] }}
-                  </div>
-                  {{ "}" }}
-                </div>
-                
-                
-              </div>
-              {{ "}" }}
-            </div>
-          </div>
-          -->
-        </div>
-      </div>
+      <json-tree object="Monster"></json-tree>
     </div>
     <script type="text/javascript">
       var abc;
@@ -91,7 +59,7 @@
           }
         }
       }
-      var app = angular.module('myApp', []);
+      var app = angular.module('myApp', ["json-tree"]);
       app.controller("myCtrl", function($scope) {
         $scope.clientX = clientX;
         $scope.clientY = clientY;
@@ -138,19 +106,6 @@
           abcd = data;
         });
       });
-    </script>
-    <script type="text/ng-template" id="Tree.html">
-      <div class="Tree" ng-repeat="Tree in Object.keys(TreeTrunk)">
-        <p class="Tree" ng-if="myCheckString(TreeTrunk[Tree]) || myCheckNum(TreeTrunk[Tree])">
-          {{Tree + ": " + TreeTrunk[Tree]}}
-        </p>
-        <div class="Tree" ng-if="myCheckObj(TreeTrunk[Tree])">
-          {{Object.keys(TreeTrunk[Tree])}}
-          {{ Tree + ":{" }}
-          <div class="Tree" ng-repeat="Tree in Object.keys(TreeTrunk[Tree])" ng-init="TreeTrunk = TreeTrunk[Tree]" ng-include="'Tree.html'"></div>
-          {{ "}" }}
-        </div>
-      </div>
     </script>
   </body>
 </html>
