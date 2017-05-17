@@ -27,19 +27,21 @@
       </div>
     </nav>
     <div>
+      <div ng-include="'Tree.html'"></div>
       <div ng-repeat="Monster in Monsters">
         <button data-toggle="collapse" data-target="{{('#'+Monster.name).replace(AllSpace,'_')}}">
           {{(''+Monster.name).replace(AllSpace,'_')}}
         </button>
         <div id="{{(''+Monster.name).replace(AllSpace,'_')}}">
-          <div class="Tree" ng-repeat="MonsterCat in Object.keys(Monster)">
+          <div class="Tree" ng-repeat="Tree in Object.keys(Monster)" ng-include="'Tree.html'">
+            <!--
             <p class="Tree" ng-if="myCheckString(Monster[MonsterCat]) || myCheckNum(Monster[MonsterCat])">
               {{MonsterCat + ": " + Monster[MonsterCat]}}
             </p>
             <div class="Tree" ng-if="myCheckObj(Monster[MonsterCat])">
               {{ MonsterCat + ":{" }}
-              <div class="Tree" ng-repeat="MonsterSubCat in Object.keys(Monster[MonsterCat])">
-                <!-- Maybe insert template here -->
+              <div class="Tree" ng-repeat="Tree in Object.keys(Monster[MonsterCat])">
+                 Maybe insert template here
                 <p class="Tree" ng-if="myCheckString(Monster[MonsterCat][MonsterSubCat]) || myCheckNum(Monster[MonsterCat][MonsterSubCat])">
                   {{MonsterSubCat + ": " + Monster[MonsterCat][MonsterSubCat]}}
                 </p>
@@ -51,9 +53,11 @@
                   {{ "}" }}
                 </div>
                 
+                
               </div>
               {{ "}" }}
             </div>
+            -->
           </div>
         </div>
       </div>
@@ -136,6 +140,16 @@
           scop.$apply();
         });
       });
+    </script>
+    <script type="text/ng-template" id="Tree.html">
+      <p class="Tree" ng-if="myCheckString(Monster[Tree]) || myCheckNum(Monster[Tree])">
+        {{Tree + ": " + Monster[Tree]}}
+      </p>
+      <div class="Tree" ng-if="myCheckObj(Monster[Tree])">
+        {{ Tree + ":{" }}
+        <div class="Tree" ng-repeat="Tree in Object.keys(Monster[Tree])" ng-include="'Tree.html'"></div>
+        {{ "}" }}
+      </div>
     </script>
   </body>
 </html>
