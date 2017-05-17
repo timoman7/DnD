@@ -150,7 +150,7 @@
         <div class="Tree" ng-if="myCheckObj(TreeTrunk[Tree])">
           {{TreeTrunk[Tree]}}
           {{ Tree + ":{" }}
-          <div class="Tree" ng-repeat="Tree in Object.keys(TreeTrunk[Tree])" ng-init="TreeTrunk = TreeTrunk[Tree]" ng-include="'Tree.html'"></div>
+          <div class="Tree" ng-repeat="Tree in Object.keys(TreeTrunk[Tree])" ng-init="TreeTrunk = {{TreeTrunk[Tree]}}'P)
           {{ "}" }}
         </div>
       </div>
