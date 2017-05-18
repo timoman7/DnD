@@ -45,8 +45,8 @@
         if(curJSON !== "Monsters"){
           curJSON = "Monsters";
           if(scop){
-            scop.Monsters = abc;
-            scop.$apply();
+            scop.abc = abc;
+            //scop.$apply();
           }
         }
       }
@@ -54,8 +54,8 @@
         if(curJSON !== "Spells"){
           curJSON = "Spells";
           if(scop){
-            scop.Monsters = abcd;
-            scop.$apply();
+            scop.abc = abcd;
+            //scop.$apply();
           }
         }
       }
@@ -65,6 +65,7 @@
         $scope.clientY = clientY;
         $scope.Monsters = {};
         $scope.jQuery = jQuery;
+        $scope.abc = {};
         /*
         Sample
           {{"name: "+Monster.name}}
@@ -97,10 +98,22 @@
         scop = $scope;
         //https://dl.dropboxusercontent.com/s/121t7xstyyeofxw/5e-SRD-Spells.json
         //https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json
+        $scope.$watch('abc', function (newVal, oldVal) {
+          if (newVal !== oldVal) {
+            try {
+              $scope.error = null;
+              $scope.Monsters = newVal;
+            } catch (e) {
+              console.log(e);
+              $scope.error = {
+                message: e.message,
+                show: true
+              }
+            }
+          }
+        });
         $.getJSON('https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json',function(data){
           abc = data;
-          scop.Monsters = abc;
-          scop.$apply();
         });
         $.getJSON('https://dl.dropboxusercontent.com/s/121t7xstyyeofxw/5e-SRD-Spells.json',function(data){
           abcd = data;
