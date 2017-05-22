@@ -24,6 +24,7 @@
         <ul class="nav navbar-nav">
           <li><a href="#" class="active" onclick="setMonsters()">Monsters</a></li>
           <li><a href="#" onclick="setSpells()">Spells</a></li>
+          <li><a href="#" onclick="setMaster()">MasterSRD</a></li>
         </ul>
       </div>
     </nav>
@@ -37,6 +38,7 @@
       var filteredMons = {};
       var abc;
       var abcd;
+      var abcde;
       var scop;
       var curJSON = "Monsters";
       var clientX = 0;
@@ -63,6 +65,15 @@
           }
         }
       }
+      function setMaster(){
+        if(curJSON !== "Master"){
+          curJSON = "Master";
+          if(scop){
+            scop.abc = abcde;
+            scop.$apply();
+          }
+        }
+      }
       //Filter object with keyword
       function filterObject(filterKey){
         if(scop){
@@ -79,6 +90,10 @@
             }else if(curJSON === "Spells"){
               if(abcd){
                 filteredMons = jQuery.extend({},abcd,true);
+              }
+            }else if(curJSON === "Master"){
+              if(abcde){
+                filteredMons = jQuery.extend({},abcde,true);
               }
             }
           }
@@ -132,12 +147,12 @@
         scop = $scope;
         //https://dl.dropboxusercontent.com/s/121t7xstyyeofxw/5e-SRD-Spells.json
         //https://dl.dropboxusercontent.com/s/iwz112i0bxp2n4a/5e-SRD-Monsters.json
+        //https://raw.githubusercontent.com/BTMorton/dnd-5e-srd/master/5esrd.json
         $scope.$watch('abc', function (newVal, oldVal) {
           if (newVal !== oldVal) {
             try {
               $scope.error = null;
               $scope.Monsters = newVal;
-              console.log(newVal);
             } catch (e) {
               console.log(e);
               $scope.error = {
@@ -153,6 +168,9 @@
         });
         $.getJSON('https://dl.dropboxusercontent.com/s/121t7xstyyeofxw/5e-SRD-Spells.json',function(data){
           abcd = data;
+        });
+        $.getJSON('https://raw.githubusercontent.com/BTMorton/dnd-5e-srd/master/5esrd.json',function(data){
+          abcde = data;
         });
       });
     </script>
