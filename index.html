@@ -50,7 +50,7 @@
           curJSON = "Monsters";
           if(scop){
             scop.abc = abc;
-            //scop.$apply();
+            scop.$apply();
           }
         }
       }
@@ -59,7 +59,7 @@
           curJSON = "Spells";
           if(scop){
             scop.abc = abcd;
-            //scop.$apply();
+            scop.$apply();
           }
         }
       }
@@ -85,6 +85,7 @@
           if(scop.abc){
             if(filteredMons){
               scop.abc = filteredMons;
+              scop.$apply();
             }
           }
         }
