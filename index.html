@@ -28,10 +28,12 @@
       </div>
     </nav>
     <div ng-if="Monsters">
+      <input id="ObjectFilter" oninput="clearTimeout(myTimeFunc);myFunc(this.value)" value="">
       <json-tree object="Monsters" class="expandable"></json-tree>
     </div>
     <script type="text/javascript">
-      var filteredMons;
+      var myTimeFunc;
+      var filteredMons = {};
       var abc;
       var abcd;
       var scop;
@@ -63,17 +65,34 @@
       //Filter object with keyword
       function filterObject(filterKey){
         if(scop){
-          filteredMons = jQuery
-            .extend({},scop.abc,true)
-            .filter(function(e){
-              var tempE = JSON.stringify(e);
-              return tempE.includes(filterKey)
+          if(filterKey.length>0){
+            filteredMons = jQuery
+              .extend({},scop.abc,true)
+              .filter(function(e){
+                var tempE = JSON.stringify(e);
+                return tempE.includes(filterKey)
+              }
+            );
+          }else{
+            if(curJSON === "Monsters"){
+              if(abc){
+                filteredMons = jQuery.extend({},abc,true);
+              }
+            }else if(curJSON === "Spells"){
+              if(abcd){
+                filteredMons = jQuery.extend({},abcd,true);
+              }
             }
-          );
+          }
           if(scop.abc){
-            scop.abc = filteredMons;
+            if(filteredMons){
+              scop.abc = filteredMons;
+            }
           }
         }
+      }
+      function myFunc(oFilterKey){
+        myTimeFunc=setTimeout(filterObject(oFilterKey),1000);
       }
       var app = angular.module('myApp', ["angular-json-tree"]);
       app.controller("myCtrl", function($scope) {
