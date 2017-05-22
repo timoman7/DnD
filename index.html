@@ -67,13 +67,10 @@
       function filterObject(filterKey){
         if(scop){
           if(filterKey.length>0){
-            filteredMons = jQuery
-              .extend({},scop.abc,true)
-              .filter(function(e){
-                var tempE = JSON.stringify(e);
-                return tempE.includes(filterKey)
-              }
-            );
+            filteredMons = Object.values(jQuery.extend({},scop.abc,true)).filter(function(e){
+              var tempE = JSON.stringify(e);
+              return tempE.includes(filterKey)
+            });
           }else{
             if(curJSON === "Monsters"){
               if(abc){
