@@ -78,7 +78,21 @@
       function filterObject(filterKey){
         if(scop){
           if(filterKey.length>0){
-            filteredMons = Object.values(jQuery.extend({},scop.abc,true)).filter(function(e){
+            if(curJSON === "Monsters"){
+              if(abc){
+                filteredMons = jQuery.extend({},abc,true);
+              }
+            }else if(curJSON === "Spells"){
+              if(abcd){
+                filteredMons = jQuery.extend({},abcd,true);
+              }
+            }else if(curJSON === "Master"){
+              if(abcde){
+                filteredMons = jQuery.extend({},abcde,true);
+              }
+            }
+            filteredMons = Object.values(filteredMons);
+            filteredMons = filteredMons.filter(function(e){
               var tempE = JSON.stringify(e);
               return tempE.includes(filterKey)
             });
