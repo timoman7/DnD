@@ -29,6 +29,7 @@
     </nav>
     <div ng-if="Monsters">
       <input id="ObjectFilter" oninput="clearTimeout(myTimeFunc);myFunc(this.value)" value="">
+      <br>
       <json-tree object="Monsters" class="expandable"></json-tree>
     </div>
     <script type="text/javascript">
