@@ -31,6 +31,7 @@
       <json-tree object="Monsters" class="expandable"></json-tree>
     </div>
     <script type="text/javascript">
+      var filteredMons;
       var abc;
       var abcd;
       var scop;
@@ -56,6 +57,21 @@
           if(scop){
             scop.abc = abcd;
             //scop.$apply();
+          }
+        }
+      }
+      //Filter object with keyword
+      function filterObject(filterKey){
+        if(scop){
+          filteredMons = jQuery
+            .extend({},scop.abc,true)
+            .filter(function(e){
+              var tempE = JSON.stringify(e);
+              return tempE.includes(filterKey)
+            }
+          );
+          if(scop.abc){
+            scop.abc = filteredMons;
           }
         }
       }
